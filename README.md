@@ -1,11 +1,10 @@
 # User Management System
 ---
-This is a React-based application built with Vite. It includes Redux Toolkit for state management and AXios for API requests
+
+This is a React-based application built with Vite. It includes Redux Toolkit for state management and Axios for API requests
 ---
 
 ## Features
-
----
 
 - User from validation
 - Redux state management
@@ -13,8 +12,6 @@ This is a React-based application built with Vite. It includes Redux Toolkit for
 - Built using TypeScript
 
 ## Installation
-
----
 
 1. Clone the repository:
 
@@ -59,6 +56,6 @@ npm run build
 
 ## Contribution
 
-Fell free to submit issues and pull requests.
+Feel free to submit issues and pull requests.
 
 ---
