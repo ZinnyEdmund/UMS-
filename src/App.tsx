@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { BrowserROuter as Router, Routes, Route, Navigate } from 'react-router-dom';
+//import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
 // Component
 import UserList from './component/UserList';
 import UserDetails from './component/UserDetails';
-import UserForm from './component/UserForm';
+import UserForm from './component/UseForm';
 import Navbar from './component/Navbar';
 
 const App: React.FC = () => {
@@ -29,7 +29,7 @@ const App: React.FC = () => {
       </Router>
     </Provider>
     
-  )
-}
+  );
+};
 
-export default App
+export default App;

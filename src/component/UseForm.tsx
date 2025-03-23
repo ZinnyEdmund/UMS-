@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { addUser, updateUser, fetchUsers, User } from '../store/userSlice';
+import { useAppDispatch, useAppSelector } from '../store/hook';
+import { addUser, updateUser, fetchUsers } from '../store/UserSlice';
+import { User } from '../store/UserSlice';
+
 
 interface FormData {
     name: string;
@@ -21,8 +23,8 @@ const UserForm: React.FC = () => {
     const dispatch = useAppDispatch();
     const isEditMode = Boolean(id);
 
-    const { users, status } = useAppSelector(state => state.users);
-    const userToEdit = isEditMode ? users.find(user => user.id === Number(id)) : null;
+    const { users, status } = useAppSelector((state) => state.users);
+    const userToEdit = isEditMode ? users.find((user: typeof User) => user.id === Number(id)) : null;
 
     const [ formData, setFormData ] = useState<FormData>({
         name: '',
@@ -46,7 +48,7 @@ const UserForm: React.FC = () => {
 
     useEffect(() => {
         // If we don't have any users yet and we are edit mode, fetch them
-        if (isEditMode && status === 'waiting'){
+        if (isEditMode && status === 'idle'){
             dispatch(fetchUsers());
         }
     }, [isEditMode, status, dispatch]);
@@ -90,7 +92,13 @@ const UserForm: React.FC = () => {
 };
 
     const validate = (): boolean => {
-        const newErrors: any = {};
+        const newErrors: Partial<{
+            name: string;
+            email: string;
+            'address.street': string;
+            'address.city': string;
+            'address.zipcode': string;
+        }> = {};
 
         if (!formData.name.trim()) {
             newErrors.name = 'Enter your name';
@@ -143,58 +151,57 @@ const UserForm: React.FC = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className="user-profile-container">
+            <div className="user-profile-form">
                 <h2>{isEditMode ? 'Edit User' : 'Add New User'}</h2>
 
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className="form-group">
                         <label>Name</label>
                         <input type="text" name="name" placeholder='Enter your name' value={formData.name} onChange={handleChange}/>
-                        {errors.name && <p>{errors.name}</p>}
+                        {errors.name && <p className="error-message">{errors.name}</p>}
                     </div>
 
-                    <div>
+                    <div className="form-group">
                         <label>Email</label>
                         <input type="text" name="email" placeholder='Enter your email' value={formData.email} onChange={handleChange}/>
-                        {errors.email && <p>{errors.email}</p>}
+                        {errors.email && <p className="error-message">{errors.email}</p>}
                     </div>
 
-                    <div>
+                    <div className="form-group">
                         <label>Phone (Optional)</label>
                         <input type="text" name="phone" placeholder='Enter your phone number' value={formData.phone} onChange={handleChange}/>
                     </div>
 
                         <h3>Address</h3>
 
-                    <div>
+                    <div className="form-group">
                         <label>Street</label>
                         <input type="text" name="address.street" placeholder='Enter your street' value={formData.address.street} onChange={handleChange}/>
-                        {errors['address.street'] && ( <p>{errors['address.street']}</p> )}
+                        {errors['address.street'] && ( <p className="error-message">{errors['address.street']}</p> )}
                     </div>
 
-                    <div>
+                    <div className="form-group">
                         <label>Suite (Optional)</label>
                         <input type="text" name="address.suite" placeholder='Enter your suite' value={formData.address.suite} onChange={handleChange}/>
                     </div>
 
-                    <div>
+                    <div className="form-group">
                         <label>City</label>
                         <input type="text" name="address.city" placeholder='Enter your city' value={formData.address.city} onChange={handleChange}/>
-                        {errors['address.city'] && ( <p>{errors['address.city']}</p> )}
+                        {errors['address.city'] && ( <p className="error-message">{errors['address.city']}</p> )}
                     </div>
 
-                    <div>
+                    <div className="form-group">
                         <label>Zipcode</label>
                         <input type="text" name="address.zicode" placeholder='Enter your zipcode' value={formData.address.zipcode} onChange={handleChange}/>
-                        {errors['address.zipcode'] && ( <p>{errors['address.zipcode']}</p> )}
+                        {errors['address.zipcode'] && ( <p className="error-message">{errors['address.zipcode']}</p> )}
                     </div>
 
-                    <div>
-                        <button type='submit'>{isEditMode ? 'Update User' : 'Add User'}</button>
-                        <button type='button' onClick={() => navigate('/users')}>Cancel</button>
+                    <div className="button-group">
+                        <button type='submit' className="btn-primary">{isEditMode ? 'Update User' : 'Add User'}</button>
+                        <button type='button' onClick={() => navigate('/users')} className="btn-secondary">Cancel</button>
                     </div>
-
                 </form>
             </div>
         </div>
