@@ -104,7 +104,7 @@ const UserForm: React.FC = () => {
         }
         if (!formData.email.trim()) {
             newErrors.email = 'Enter your email';
-        } else if (!/\S+@\\S+\.S+/.test(formData.email)) {
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+[a-zA-Z]{2,}$/.test(formData.email)) {
             newErrors.email = 'Enter a valid email';
         }
         if (!formData.address.street.trim()) {
@@ -189,7 +189,7 @@ const UserForm: React.FC = () => {
                     </div>
 
                     <div className="form-group">
-                        <label>Zipcode</label>
+                        <label>Zipcode (Optional)</label>
                         <input type="text" name="address.zicode" placeholder='Enter your zipcode' value={formData.address.zipcode} onChange={handleChange}/>
                     </div>
 
