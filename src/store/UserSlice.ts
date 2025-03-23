@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 
 // Define users interface
-interface User {
+export interface User {
     id: number;
     name: string;
     email: string;
+    phone: string;
     address: { 
         city: string;
         suite?: string;
@@ -40,6 +41,7 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 interface AddUserPayload {
     name: string;
     email: string;
+    phone: string;
     address: {
         city: string;
         suite?: string;

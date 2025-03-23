@@ -24,7 +24,7 @@ const UserForm: React.FC = () => {
     const isEditMode = Boolean(id);
 
     const { users, status } = useAppSelector((state) => state.users);
-    const userToEdit = isEditMode ? users.find((user: typeof User) => user.id === Number(id)) : null;
+    const userToEdit = isEditMode ? users.find((user:  User) => user.id === Number(id)) : null;
 
     const [ formData, setFormData ] = useState<FormData>({
         name: '',
@@ -64,7 +64,7 @@ const UserForm: React.FC = () => {
                     street: userToEdit.address.street,
                     suite: userToEdit.address.suite || '',
                     city: userToEdit.address.city,
-                    zipcode: userToEdit.address.zipcode
+                    zipcode: userToEdit.address.zipcode || ''
                 },
 
             });
@@ -97,7 +97,6 @@ const UserForm: React.FC = () => {
             email: string;
             'address.street': string;
             'address.city': string;
-            'address.zipcode': string;
         }> = {};
 
         if (!formData.name.trim()) {
@@ -113,9 +112,6 @@ const UserForm: React.FC = () => {
         }
         if (!formData.address.city.trim()) {
             newErrors['address.city'] = 'City is required!';
-        }
-        if (!formData.address.zipcode.trim()) {
-            newErrors['address.zipcode'] = 'Zipcode is required!';
         }
 
         setErrors(newErrors);
@@ -195,7 +191,6 @@ const UserForm: React.FC = () => {
                     <div className="form-group">
                         <label>Zipcode</label>
                         <input type="text" name="address.zicode" placeholder='Enter your zipcode' value={formData.address.zipcode} onChange={handleChange}/>
-                        {errors['address.zipcode'] && ( <p className="error-message">{errors['address.zipcode']}</p> )}
                     </div>
 
                     <div className="button-group">

@@ -7,7 +7,7 @@ import { store } from './store/store';
 import UserList from './component/UserList';
 import UserDetails from './component/UserDetails';
 import UserForm from './component/UseForm';
-import Navbar from './component/Navbar';
+import Navbar from "./component/Navbar";
 
 const App: React.FC = () => {
   return (
