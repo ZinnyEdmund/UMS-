@@ -1,5 +1,6 @@
 body{
   font-family: 'Courier New', Courier, monospace, sans-serif;
+  margin: 50px;
 }
 .search-bar{
   width: 100%;
@@ -277,12 +278,12 @@ body{
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 768px){
+@media (min-width: 500px){
   .user-list-grid{
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1024px){
+@media (min-width: 600px){
   .user-list-grid{
     grid-template-columns: repeat(2, 1fr);
   }

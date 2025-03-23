@@ -4,7 +4,7 @@ import { useAppDispatch } from './store/hook';
 import { User, deleteUser } from './store/UserSlice';
 
 interface UseCardProps {
-    user: typeof User;
+    user: User;
 }
 
 const UserCard: React.FC<UseCardProps> =({ user }) => {
