@@ -1,6 +1,6 @@
 body{
   font-family: 'Courier New', Courier, monospace, sans-serif;
-  margin: 50px;
+  margin: 20px;
   background-color: #F6F6F6 ;
 }
 .search-bar{
@@ -245,7 +245,7 @@ body{
   cursor: pointer;
 }
 .navbar{
-  background-color: #D6E4F0;
+  background-color: #1E56A0;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 15px 0;
