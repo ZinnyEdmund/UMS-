@@ -75,6 +75,7 @@ body{
 .user-card .delete-btn{
   background-color: #dc3545;
   color: white;
+  border: none;
 }
 .user-card .delete-btn:hover{
   background-color: #790f1a;
@@ -175,6 +176,7 @@ body{
 }
 .delete-btn{
   background-color: red;
+  border: none;
 }
 .delete-btn:hover{
   background-color: darkred;
